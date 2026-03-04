@@ -33,7 +33,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       #- name: Get tag
@@ -48,7 +48,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/${{ github.actor }}/openclaw
+            ghcr.io/${{ github.repository_owner }}/openclaw
           tags: |
             type=raw,value=${{ steps.datetime.outputs.datetime }}
             type=sha
